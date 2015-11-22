@@ -15,3 +15,8 @@ def addAlbum(inputuser, filename, listbox):
     f.close
 
 
+def addAlbumDeleteInput(e, listamusica, listbox):
+    """Adds inputuser to listbox and to file filename
+       Deletes text in Entry e"""
+    addAlbum(e.get(), listamusica, listbox)
+    e.delete(0, 'end')
