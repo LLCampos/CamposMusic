@@ -1,7 +1,6 @@
 from Tkinter import *
 from ttk import *
-from waiting_list import *
-from iPod import *
+from content import *
 
 root = Tk()
 root.title('CamposMusic')
@@ -16,8 +15,6 @@ n.add(waitingList, text='WaitingList')
 n.add(ipod, text='iPod')
 n.pack()
 
-waiting_list(waitingList)
-iPod(ipod)
-
+content(ipod, waitingList)
 
 root.mainloop()

@@ -1,3 +1,7 @@
+import tkMessageBox
+from constants import *
+
+
 def addStuff(filename, listbox):
     """Inserts all albums in filename in listbox"""
     f = open(filename, 'r')
@@ -34,12 +38,19 @@ def deleteAlbumFromFile(index, filename):
     f.close()
 
 
-def deleteAlbums(filename, listbox):
+def deleteAlbums(filename, listbox, listboxi = False):
     """Delete album(s) from file and listbox"""
     indexes = reversed(listbox.curselection())
     for i in indexes:
+        if listboxi:
+            transferToiPod(listbox.get(i), listboxi)
         listbox.delete(i)
         deleteAlbumFromFile(i, filename)
+
+
+def transferToiPod(album, listboxi):
+    if tkMessageBox.askyesno('', 'Do you want to transfer ' + album + ' to iPod list?'):
+        addAlbum(album, listaipod, listboxi)
 
 
 def editAlbumFromFile(index, filename, new_text):
