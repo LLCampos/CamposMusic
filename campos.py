@@ -1,41 +1,50 @@
-import Tkinter
+from Tkinter import *
+from ttk import *
 from helper_functions import *
 from popups import *
 
-
 listamusica = 'Lista Musica.txt'
 
-window = Tkinter.Tk()
-window.title('CamposMusic')
-window.wm_iconbitmap('favicon.ico')
+root = Tk()
+root.title('CamposMusic')
+root.wm_iconbitmap('favicon.ico')
 
-e = Tkinter.Entry(window)
+n = Notebook(root)
+
+waitingList = Frame(n)
+iPod = Frame(n)
+
+n.add(waitingList, text='WaitingList')
+n.add(iPod, text='iPod')
+n.pack()
+
+e = Entry(waitingList)
 e.pack()
 
 # 'Add Album' Button
-addbtn = Tkinter.Button(window, text='Add Album',
+addbtn = Button(waitingList, text='Add Album',
                         command=lambda: addAlbumDeleteInput(e, listamusica, listbox))
 addbtn.pack()
 
 # List of albums
-scrollbar = Tkinter.Scrollbar(window, orient='vertical')
-listbox = Tkinter.Listbox(window, width=50, yscrollcommand=scrollbar.set, selectmode='extended')
+scrollbar = Scrollbar(waitingList, orient='vertical')
+listbox = Listbox(waitingList, width=50, yscrollcommand=scrollbar.set, selectmode='extended')
 scrollbar.config(command=listbox.yview)
 scrollbar.pack(side='right', fill='y')
 listbox.pack(side='left', fill='both', expand=1)
 addStuff(listamusica, listbox)
 
 # Add 'Delete' Button
-delbtn = Tkinter.Button(window, text='Delete', command=lambda: deleteAlbums(listamusica, listbox))
+delbtn = Button(waitingList, text='Delete', command=lambda: deleteAlbums(listamusica, listbox))
 delbtn.pack()
 
 # Add 'Edit' Button
-editbtn = Tkinter.Button(window, text='Edit', command=lambda: Edit(listamusica, listbox))
+editbtn = Button(waitingList, text='Edit', command=lambda: Edit(listamusica, listbox))
 editbtn.pack()
 
 # Add 'Downloaded' Button
-downedbtn = Tkinter.Button(window, text='Downloaded', command=lambda: changeColor(listbox, 'green'))
+downedbtn = Button(waitingList, text='Downloaded', command=lambda: changeColor(listbox, 'green'))
 downedbtn.pack()
 
 
-window.mainloop()
+root.mainloop()
