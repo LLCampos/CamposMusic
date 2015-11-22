@@ -33,5 +33,9 @@ delbtn.pack()
 editbtn = Tkinter.Button(window, text='Edit', command=lambda: Edit(listamusica, listbox))
 editbtn.pack()
 
+# Add 'Downloaded' Button
+downedbtn = Tkinter.Button(window, text='Downloaded', command=lambda: changeColor(listbox, 'green'))
+downedbtn.pack()
+
 
 window.mainloop()

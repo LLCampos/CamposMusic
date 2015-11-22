@@ -60,3 +60,9 @@ def editAlbum(filename, listbox, inp, index):
     listbox.delete(index)
     listbox.insert(index, inp)
     editAlbumFromFile(index, filename, inp)
+
+
+def changeColor(listbox, color):
+    """Change the color of the selected listbox items"""
+    for i in listbox.curselection():
+        listbox.itemconfig(i, bg=color)
