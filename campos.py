@@ -1,5 +1,6 @@
 import Tkinter
 from helper_functions import *
+from popups import *
 
 
 listamusica = 'Lista Musica.txt'
@@ -13,7 +14,7 @@ e.pack()
 
 # 'Add Album' Button
 addbtn = Tkinter.Button(window, text='Add Album',
-                                command=lambda: addAlbumDeleteInput(e, listamusica, listbox))
+                        command=lambda: addAlbumDeleteInput(e, listamusica, listbox))
 addbtn.pack()
 
 # List of albums
@@ -27,6 +28,10 @@ addStuff(listamusica, listbox)
 # Add 'Delete' Button
 delbtn = Tkinter.Button(window, text='Delete', command=lambda: deleteAlbums(listamusica, listbox))
 delbtn.pack()
+
+# Add 'Edit' Button
+editbtn = Tkinter.Button(window, text='Edit', command=lambda: Edit(listamusica, listbox))
+editbtn.pack()
 
 
 window.mainloop()

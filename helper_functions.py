@@ -40,3 +40,23 @@ def deleteAlbums(filename, listbox):
     for i in indexes:
         listbox.delete(i)
         deleteAlbumFromFile(i, filename)
+
+
+def editAlbumFromFile(index, filename, new_text):
+    """Edits album from file"""
+    f = open(filename, 'r')
+    albums = f.readlines()
+    f.close()
+    albums[index] = new_text
+    f = open(filename, 'w')
+    for album in albums:
+        f.write(album)
+    f.close()
+
+
+def editAlbum(filename, listbox, inp, index):
+    """Edits album from file and listbox
+    inp is the input of the user"""
+    listbox.delete(index)
+    listbox.insert(index, inp)
+    editAlbumFromFile(index, filename, inp)
