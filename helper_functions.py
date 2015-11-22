@@ -20,3 +20,22 @@ def addAlbumDeleteInput(e, listamusica, listbox):
        Deletes text in Entry e"""
     addAlbum(e.get(), listamusica, listbox)
     e.delete(0, 'end')
+
+
+def deleteAlbumFromFile(index, filename):
+    f = open(filename, 'r')
+    albums = f.readlines()
+    f.close()
+    albums.pop(index)
+    f = open(filename, 'w')
+    for album in albums:
+        f.write(album)
+    f.close()
+
+
+def deleteAlbums(filename, listbox):
+    """Delete album(s) from file and listbox"""
+    indexes = reversed(listbox.curselection())
+    for i in indexes:
+        listbox.delete(i)
+        deleteAlbumFromFile(i, filename)
