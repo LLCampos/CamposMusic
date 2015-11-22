@@ -5,6 +5,8 @@ from helper_functions import *
 listamusica = 'Lista Musica.txt'
 
 window = Tkinter.Tk()
+window.title('CamposMusic')
+window.wm_iconbitmap('favicon.ico')
 
 e = Tkinter.Entry(window)
 e.pack()
@@ -19,7 +21,7 @@ scrollbar = Tkinter.Scrollbar(window, orient='vertical')
 listbox = Tkinter.Listbox(window, width=50, yscrollcommand=scrollbar.set, selectmode='extended')
 scrollbar.config(command=listbox.yview)
 scrollbar.pack(side='right', fill='y')
-listbox.pack()
+listbox.pack(side='left', fill='both', expand=1)
 addStuff(listamusica, listbox)
 
 # Add 'Delete' Button

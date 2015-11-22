@@ -23,6 +23,7 @@ def addAlbumDeleteInput(e, listamusica, listbox):
 
 
 def deleteAlbumFromFile(index, filename):
+    """Delete album from file filename"""
     f = open(filename, 'r')
     albums = f.readlines()
     f.close()
