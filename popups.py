@@ -4,9 +4,11 @@ from helper_functions import *
 
 def Edit(filename, listbox):
     edit = Tkinter.Tk()
+    edit.title('CamposMusic - Edit')
+    edit.wm_iconbitmap('favicon.ico')
     n = listbox.curselection()[0]
     v = listbox.get(n)
-    editentry = Tkinter.Entry(edit)
+    editentry = Tkinter.Entry(edit, width=55)
     editentry.insert(0, v)
     editentry.pack()
 
