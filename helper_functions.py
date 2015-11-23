@@ -3,7 +3,6 @@ import webbrowser
 from constants import *
 
 
-
 def addStuff(filename, listbox):
     """Updates all albums listbox"""
     listbox.delete(0, 'end')
@@ -14,6 +13,8 @@ def addStuff(filename, listbox):
         listbox.insert('end', album[0])
         if album[1] == '$g':
             listbox.itemconfig('end', bg='green')
+        elif album[1] == '$r':
+            listbox.itemconfig('end', bg='indian red')
         else:
             listbox.itemconfig('end', bg='white smoke')
     f.close()
@@ -102,6 +103,8 @@ def changeColor(filename, listbox, color):
         if listbox.itemcget(i, 'bg') != color:
             if color == 'green':
                 addSign(filename, listbox, '$g', i)
+            elif color == 'indian red':
+                addSign(filename, listbox, '$r', i)
         else:
             addSign(filename, listbox, '', i)
     addStuff(filename, listbox)
