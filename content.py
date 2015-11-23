@@ -58,5 +58,5 @@ def content(iPod, waitingList):
     editbtnw.pack()
 
     # Add 'Downloaded' Button
-    downedbtn = Button(waitingList, text='Downloaded', command=lambda: changeColor(listboxw, 'green'))
+    downedbtn = Button(waitingList, text='Downloaded', command=lambda: changeColor(listamusica, listboxw, 'green'))
     downedbtn.pack()

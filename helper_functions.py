@@ -3,20 +3,26 @@ from constants import *
 
 
 def addStuff(filename, listbox):
-    """Inserts all albums in filename in listbox"""
+    """Updates all albums listbox"""
+    listbox.delete(0, 'end')
     f = open(filename, 'r')
     albums = f.readlines()
+    albums = [album.strip().split(',') for album in albums]
     for album in albums:
-        listbox.insert('end', album)
+        listbox.insert('end', album[0])
+        if album[1] == '$g':
+            listbox.itemconfig('end', bg='green')
+        else:
+            listbox.itemconfig('end', bg='white smoke')
     f.close()
 
 
 def addAlbum(inputuser, filename, listbox):
     """Adds inputuser to listbox and file filename"""
-    listbox.insert('end', inputuser)
     f = open(filename, 'a')
-    f.write(inputuser.encode('utf-8') + '\n')
-    f.close
+    f.write(inputuser.encode('utf-8') + ',\n')
+    f.close()
+    addStuff(filename, listbox)
 
 
 def addAlbumDeleteInput(e, listamusica, listbox):
@@ -60,7 +66,8 @@ def editAlbumFromFile(index, filename, new_text):
     f = open(filename, 'r')
     albums = f.readlines()
     f.close()
-    albums[index] = new_text
+    sign = albums[index].strip().split(',')[1]
+    albums[index] = new_text + ',' + sign + '\n'
     f = open(filename, 'w')
     for album in albums:
         f.write(album)
@@ -70,12 +77,32 @@ def editAlbumFromFile(index, filename, new_text):
 def editAlbum(filename, listbox, inp, index):
     """Edits album from file and listbox
     inp is the input of the user"""
-    listbox.delete(index)
-    listbox.insert(index, inp)
     editAlbumFromFile(index, filename, inp)
+    addStuff(filename, listbox)
 
 
-def changeColor(listbox, color):
+def addSign(filename, listbox, sign, i):
+    """Adds sign to album in file filename"""
+    f = open(filename, 'r')
+    albums = f.readlines()
+    f.close()
+    name_album = albums[i].strip().split(',')[0]
+    albums[i] = name_album + ',' + sign + '\n'
+    f = open(filename, 'w')
+    for album in albums:
+        f.write(album)
+    f.close()
+
+
+def changeColor(filename, listbox, color):
     """Change the color of the selected listbox items"""
     for i in listbox.curselection():
-        listbox.itemconfig(i, bg=color)
+        if listbox.itemcget(i, 'bg') != color:
+            if color == 'green':
+                addSign(filename, listbox, '$g', i)
+        else:
+            addSign(filename, listbox, '', i)
+    addStuff(filename, listbox)
+
+
+
