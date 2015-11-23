@@ -35,5 +35,5 @@ def Download(listbox):
     optionmenu = OptionMenu(download, v, *options)
     optionmenu.pack()
 
-    btn = Button(download, text='Go!', command=lambda: goToSite(v.get()))
+    btn = Button(download, text='Go!', command=lambda: goToSites(listbox, v.get()))
     btn.pack()

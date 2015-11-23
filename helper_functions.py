@@ -1,5 +1,7 @@
 import tkMessageBox
+import webbrowser
 from constants import *
+
 
 
 def addStuff(filename, listbox):
@@ -105,4 +107,22 @@ def changeColor(filename, listbox, color):
     addStuff(filename, listbox)
 
 
+def goToSite(album, site):
+    """Does search in site of album"""
+    album = album.replace(' ', '%20')
+    if site == 'PirateBay':
+        url = 'https://arrr.xyz/search/' + album + '/0/99/0'
+    elif site == 'Kickass':
+        url = 'http://katproxy.is/usearch/' + album
+    elif site == 'Google':
+        url = 'https://www.google.pt/webhp?hl=pt-PT#hl=pt-PT&q=' + album + '+(rar+|+zip)'
+    elif site == 'New Album Release':
+        url = 'http://newalbumreleases.net/?s=' + album
+    webbrowser.open(url)
 
+
+def goToSites(listbox, site):
+    """Does search in site of all items selected is listbox"""
+    indexes = listbox.curselection()
+    for index in indexes:
+        goToSite(listbox.get(index), site)
