@@ -11,7 +11,7 @@ def Edit(filename, listbox):
     editentry.pack()
 
     def pressOkEdit():
-        editAlbum(filename, listbox, editentry.get(), n)
+        editAlbum(filename, listbox, editentry.get().encode('utf-8'), n)
         edit.destroy()
 
     okbtn = Tkinter.Button(edit, text='OK', command=pressOkEdit)

@@ -15,7 +15,7 @@ def addAlbum(inputuser, filename, listbox):
     """Adds inputuser to listbox and file filename"""
     listbox.insert('end', inputuser)
     f = open(filename, 'a')
-    f.write(inputuser + '\n')
+    f.write(inputuser.encode('utf-8') + '\n')
     f.close
 
 
@@ -38,14 +38,16 @@ def deleteAlbumFromFile(index, filename):
     f.close()
 
 
-def deleteAlbums(filename, listbox, listboxi = False):
+def deleteAlbums(filename, listbox, listboxi=False):
     """Delete album(s) from file and listbox"""
     indexes = reversed(listbox.curselection())
     for i in indexes:
-        if listboxi:
-            transferToiPod(listbox.get(i), listboxi)
-        listbox.delete(i)
-        deleteAlbumFromFile(i, filename)
+        name_album = listbox.get(i)
+        if tkMessageBox.askyesno('Delete', 'Are you sure you want to delete ' + name_album + '?'):
+            if listboxi:
+                transferToiPod(name_album, listboxi)
+            listbox.delete(i)
+            deleteAlbumFromFile(i, filename)
 
 
 def transferToiPod(album, listboxi):
