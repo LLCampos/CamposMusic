@@ -1,2 +1,2 @@
-listaipod = 'iPod.txt'
-listamusica = 'Lista Musica.txt'
+listaipod = 'Lists\iPod.txt'
+listamusica = 'Lists\Lista Musica.txt'
