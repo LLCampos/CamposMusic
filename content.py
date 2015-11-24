@@ -68,3 +68,9 @@ def content(iPod, waitingList):
     # Add 'Problems' Button
     prob = Button(waitingList, text='Problems', command=lambda: changeColor(listamusica, listboxw, 'indian red'))
     prob.pack()
+
+    # Add 'Listened' Button
+    liste = Button(waitingList, text='Listened', command=lambda: changeColor(listamusica, listboxw, 'plum3'))
+    liste.pack()
+
+
