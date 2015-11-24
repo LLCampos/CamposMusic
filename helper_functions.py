@@ -1,6 +1,8 @@
 import tkMessageBox
 import webbrowser
+import os
 from constants import *
+
 
 
 def addStuff(filename, listbox):
@@ -25,7 +27,7 @@ def addStuff(filename, listbox):
 def addAlbum(inputuser, filename, listbox):
     """Adds inputuser to listbox and file filename"""
     f = open(filename, 'a')
-    f.write(inputuser.encode('utf-8') + ',\n')
+    f.write(inputuser.encode('utf-8') + ',,\n')
     f.close()
     addStuff(filename, listbox)
 
@@ -66,33 +68,24 @@ def transferToiPod(album, listboxi):
         addAlbum(album, listaipod, listboxi)
 
 
-def editAlbumFromFile(index, filename, new_text):
-    """Edits album from file"""
-    f = open(filename, 'r')
-    albums = f.readlines()
-    f.close()
-    sign = albums[index].strip().split(',')[1]
-    albums[index] = new_text + ',' + sign + '\n'
-    f = open(filename, 'w')
-    for album in albums:
-        f.write(album)
-    f.close()
-
-
 def editAlbum(filename, listbox, inp, index):
     """Edits album from file and listbox
     inp is the input of the user"""
-    editAlbumFromFile(index, filename, inp)
+    addInfo(filename, listbox, inp, index, 0)
     addStuff(filename, listbox)
 
 
-def addSign(filename, listbox, sign, i):
-    """Adds sign to album in file filename"""
+def addInfo(filename, listbox, info, i, n):
+    """Adds info to album in file filename
+    i is index
+    n is position of info
+    """
     f = open(filename, 'r')
     albums = f.readlines()
     f.close()
-    name_album = albums[i].strip().split(',')[0]
-    albums[i] = name_album + ',' + sign + '\n'
+    albuminfo = albums[i].strip().split(',')
+    albuminfo[n] = info
+    albums[i] = ','.join(albuminfo) + '\n'
     f = open(filename, 'w')
     for album in albums:
         f.write(album)
@@ -104,13 +97,13 @@ def changeColor(filename, listbox, color):
     for i in listbox.curselection():
         if listbox.itemcget(i, 'bg') != color:
             if color == 'green':
-                addSign(filename, listbox, '$g', i)
+                addInfo(filename, listbox, '$g', i, 1)
             elif color == 'indian red':
-                addSign(filename, listbox, '$r', i)
+                addInfo(filename, listbox, '$r', i, 1)
             elif color == 'plum3':
-                addSign(filename, listbox, '$p', i)
+                addInfo(filename, listbox, '$p', i, 1)
         else:
-            addSign(filename, listbox, '', i)
+            addInfo(filename, listbox, '', i, 1)
     addStuff(filename, listbox)
 
 
@@ -133,3 +126,16 @@ def goToSites(listbox, site):
     indexes = listbox.curselection()
     for index in indexes:
         goToSite(listbox.get(index), site)
+
+
+def openDirectory(lista, listbox):
+    index = listbox.curselection()[0]
+    albums = open(lista, 'r').readlines()
+    album = albums[index]
+    album = album.strip().split(',')
+    directory = album[2]
+    os.startfile(directory, 'open')
+
+
+
+

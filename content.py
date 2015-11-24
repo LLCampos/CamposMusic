@@ -7,7 +7,7 @@ from constants import *
 def content(iPod, waitingList):
     ##### IPOD #####
     # Entry
-    e = Entry(iPod)
+    e = Entry(iPod, width=80)
     e.pack()
 
     # 'Add Album' Button
@@ -33,12 +33,12 @@ def content(iPod, waitingList):
 
     ##### Waiting_List #####
 
-    ew = Entry(waitingList)
+    ew = Entry(waitingList, width=80)
     ew.pack()
 
     # 'Add Album' Button
     addbtnw = Button(waitingList, text='Add Album',
-                            command=lambda: addAlbumDeleteInput(ew, listamusica, listboxw))
+                    command=lambda: addAlbumDeleteInput(ew, listamusica, listboxw))
     addbtnw.pack()
 
     # List of albums
@@ -58,7 +58,7 @@ def content(iPod, waitingList):
     editbtnw.pack()
 
     # Add 'Downloaded' Button
-    downedbtn = Button(waitingList, text='Downloaded', command=lambda: changeColor(listamusica, listboxw, 'green'))
+    downedbtn = Button(waitingList, text='Downloaded', command=lambda: Downloaded(listamusica, listboxw, 'green'))
     downedbtn.pack()
 
     # Add 'Download' Button
@@ -72,5 +72,9 @@ def content(iPod, waitingList):
     # Add 'Listened' Button
     liste = Button(waitingList, text='Listened', command=lambda: changeColor(listamusica, listboxw, 'plum3'))
     liste.pack()
+
+    # Add 'Go' Button
+    go = Button(waitingList, text='Go!', command=lambda: openDirectory(listamusica, listboxw))
+    go.pack()
 
 
