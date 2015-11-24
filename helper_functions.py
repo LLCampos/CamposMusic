@@ -4,7 +4,6 @@ import os
 from constants import *
 
 
-
 def addStuff(filename, listbox):
     """Updates all albums listbox"""
     listbox.delete(0, 'end')
@@ -19,6 +18,8 @@ def addStuff(filename, listbox):
             listbox.itemconfig('end', bg='indian red')
         elif album[1] == '$p':
             listbox.itemconfig('end', bg='plum3')
+        elif album[1] == '$e':
+            listbox.itemconfig('end', bg='orange')
         else:
             listbox.itemconfig('end', bg='white smoke')
     f.close()
@@ -102,6 +103,8 @@ def changeColor(filename, listbox, color):
                 addInfo(filename, listbox, '$r', i, 1)
             elif color == 'plum3':
                 addInfo(filename, listbox, '$p', i, 1)
+            elif color == 'orange':
+                addInfo(filename, listbox, '$e', i, 1)
         else:
             addInfo(filename, listbox, '', i, 1)
     addStuff(filename, listbox)

@@ -77,4 +77,8 @@ def content(iPod, waitingList):
     go = Button(waitingList, text='Go!', command=lambda: openDirectory(listamusica, listboxw))
     go.pack()
 
+    # Add 'Extra' Button
+    extra = Button(waitingList, text='Extra', command=lambda: changeColor(listamusica, listboxw, 'orange'))
+    extra.pack()
+
 
