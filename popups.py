@@ -28,7 +28,7 @@ def Download(listbox):
     download.wm_iconbitmap('favicon.ico')
     download.geometry('200x50')
 
-    options = ['PirateBay', 'Kickass', 'Google', 'New Album Release']
+    options = ['PirateBay', 'Kickass', 'RUTracker', 'Google', 'New Album Release']
     v = StringVar(download)
     v.set(options[0])
 

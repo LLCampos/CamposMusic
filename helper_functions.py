@@ -121,6 +121,8 @@ def goToSite(album, site):
         url = 'https://www.google.pt/webhp?hl=pt-PT#hl=pt-PT&q=' + album + '+(rar+|+zip)'
     elif site == 'New Album Release':
         url = 'http://newalbumreleases.net/?s=' + album
+    elif site == 'RUTracker':
+        url = 'http://rutracker.org/forum/search_cse.php?cx=014434608714260776013%3Aggcq1kovlga&cof=FORID%3A9&ie=utf-8&q=' + album + '&sa=%D0%9F%D0%BE%D0%B8%D1%81%D0%BA+%D0%B2+Google&siteurl=http%3A%2F%2Frutracker.org%2Fforum%2Findex.php'
     webbrowser.open(url)
 
 
