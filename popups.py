@@ -41,25 +41,3 @@ def Download(listbox):
 
     btn = Button(download, text='Go!', command=lambda: downloadPopup(listbox, v.get()))
     btn.pack()
-
-
-def Downloaded(listamusica, listbox, color):
-
-    path = Tk()
-    path.title('CamposMusic - Path')
-    path.wm_iconbitmap('favicon.ico')
-
-    pathlabel = Label(path, text='Where it is?')
-    pathlabel.pack()
-
-    pathentry = Entry(path, width=55)
-    pathentry.pack()
-
-    def wherePopup(listamusica, listbox, color):
-        inp = pathentry.get().encode('utf-8')
-        addInfo(listamusica, listbox, inp, listbox.curselection()[0], 2)
-        changeColor(listamusica, listbox, color)
-        path.destroy()
-
-    pathbutton = Button(path, text='Ok!', command=lambda: wherePopup(listamusica, listbox, color))
-    pathbutton.pack()
