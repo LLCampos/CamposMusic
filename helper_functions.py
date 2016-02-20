@@ -27,6 +27,7 @@ def addStuff(filename, listbox):
 
 def addAlbum(inputuser, filename, listbox):
     """Adds inputuser to listbox and file filename"""
+    inputuser = inputuser.replace("\n", ' ')
     f = open(filename, 'a')
     f.write(inputuser.encode('utf-8') + ',,\n')
     f.close()
