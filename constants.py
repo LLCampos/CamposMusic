@@ -1,2 +1,2 @@
-listaipod = 'Lists\iPod.txt'
-listamusica = 'Lists\Lista Musica.txt'
+listaipod = 'C:\Users\Luis\Google Drive\Backup Ficheiros Programas Musica\iPod.txt'
+listamusica = 'C:\Users\Luis\Google Drive\Backup Ficheiros Programas Musica\Lista Musica.txt'
