@@ -19,6 +19,8 @@ def addStuff(filename, listbox):
             listbox.itemconfig('end', bg='plum3')
         elif album[1] == '$e':
             listbox.itemconfig('end', bg='orange')
+        elif album[1] == '$y':
+            listbox.itemconfig('end', bg='yellow')
         else:
             listbox.itemconfig('end', bg='white smoke')
     f.close()
@@ -105,6 +107,8 @@ def changeColor(filename, listbox, color):
                 addInfo(filename, listbox, '$p', i, 1)
             elif color == 'orange':
                 addInfo(filename, listbox, '$e', i, 1)
+            elif color == 'yellow':
+                addInfo(filename, listbox, '$y', i, 1)
         else:
             addInfo(filename, listbox, '', i, 1)
     addStuff(filename, listbox)

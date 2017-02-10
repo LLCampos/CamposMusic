@@ -73,6 +73,10 @@ def content(iPod, waitingList):
     liste = Button(waitingList, text='Listened', command=lambda: changeColor(listamusica, listboxw, 'plum3'))
     liste.pack()
 
+    # Add 'Buy' Button
+    liste = Button(waitingList, text='Buy', command=lambda: changeColor(listamusica, listboxw, 'yellow'))
+    liste.pack()
+
     # Add 'Extra' Button
     extra = Button(waitingList, text='Extra', command=lambda: changeColor(listamusica, listboxw, 'orange'))
     extra.pack()
