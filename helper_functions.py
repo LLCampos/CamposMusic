@@ -1,6 +1,5 @@
 import tkMessageBox
 import webbrowser
-import os
 from constants import *
 
 
@@ -132,16 +131,3 @@ def goToSites(listbox, site):
     indexes = listbox.curselection()
     for index in indexes:
         goToSite(listbox.get(index), site)
-
-
-def openDirectory(lista, listbox):
-    index = listbox.curselection()[0]
-    albums = open(lista, 'r').readlines()
-    album = albums[index]
-    album = album.strip().split(',')
-    directory = album[2]
-    os.startfile(directory, 'open')
-
-
-
-
