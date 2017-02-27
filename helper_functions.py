@@ -1,6 +1,7 @@
 import tkMessageBox
 import webbrowser
 from constants import *
+import urllib
 
 
 def addStuff(filename, listbox):
@@ -114,19 +115,19 @@ def changeColor(filename, listbox, color):
     addStuff(filename, listbox)
 
 
-def goToSite(album, site):
+def goToSite(album_name, site):
     """Does search in site of album"""
-    album = album.replace(' ', '%20')
+    escaped_album_name = urllib.quote(album_name)
     if site == 'PirateBay':
-        url = 'https://arrr.xyz/search/' + album + '/0/99/0'
+        url = 'https://arrr.xyz/search/' + escaped_album_name + '/0/99/0'
     elif site == 'Kickass':
-        url = 'http://katproxy.is/usearch/' + album
+        url = 'http://katproxy.is/usearch/' + escaped_album_name
     elif site == 'Google':
-        url = 'https://www.google.pt/webhp?hl=pt-PT#hl=pt-PT&q=' + album + '+(rar+|+zip)'
+        url = 'https://www.google.pt/webhp?hl=pt-PT#hl=pt-PT&q=' + escaped_album_name + '+(rar+|+zip)'
     elif site == 'New Album Release':
-        url = 'http://newalbumreleases.net/?s=' + album
+        url = 'http://newalbumreleases.net/?s=' + escaped_album_name
     elif site == 'RUTracker':
-        url = 'http://rutracker.org/forum/search_cse.php?cx=014434608714260776013%3Aggcq1kovlga&cof=FORID%3A9&ie=utf-8&q=' + album + '&sa=%D0%9F%D0%BE%D0%B8%D1%81%D0%BA+%D0%B2+Google&siteurl=http%3A%2F%2Frutracker.org%2Fforum%2Findex.php'
+        url = 'http://rutracker.org/forum/search_cse.php?cx=014434608714260776013%3Aggcq1kovlga&cof=FORID%3A9&ie=utf-8&q=' + escaped_album_name + '&sa=%D0%9F%D0%BE%D0%B8%D1%81%D0%BA+%D0%B2+Google&siteurl=http%3A%2F%2Frutracker.org%2Fforum%2Findex.php'
     webbrowser.open(url)
 
 
