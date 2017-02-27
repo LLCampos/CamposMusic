@@ -121,7 +121,7 @@ def goToSite(album_name, site):
     if site == 'PirateBay':
         url = 'https://arrr.xyz/search/' + escaped_album_name + '/0/99/0'
     elif site == 'Kickass':
-        url = 'http://katproxy.is/usearch/' + escaped_album_name
+        url = 'http://kickasstorrents.to/usearch/' + escaped_album_name
     elif site == 'Google':
         url = 'https://www.google.pt/webhp?hl=pt-PT#hl=pt-PT&q=' + escaped_album_name + '+(rar+|+zip)'
     elif site == 'New Album Release':
