@@ -5,7 +5,6 @@ from helper_functions import *
 def Edit(filename, listbox):
     edit = Tk()
     edit.title('CamposMusic - Edit')
-    edit.wm_iconbitmap('favicon.ico')
     n = listbox.curselection()[0]
     v = listbox.get(n)
     editentry = Entry(edit, width=55)
@@ -25,7 +24,6 @@ def Edit(filename, listbox):
 def Download(listbox):
     download = Tk()
     download.title('CamposMusic - Download')
-    download.wm_iconbitmap('favicon.ico')
     download.geometry('200x50')
 
     options = ['PirateBay', 'Kickass', 'RUTracker', 'Google', 'New Album Release']

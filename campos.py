@@ -4,7 +4,6 @@ from content import *
 
 root = Tk()
 root.title('CamposMusic')
-root.wm_iconbitmap('favicon.ico')
 
 n = Notebook(root)
 
