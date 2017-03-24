@@ -4,6 +4,10 @@ from constants import *
 import urllib
 
 
+def cleanUserInput(user_input):
+    return user_input.replace("\n", ' ').replace(',', '')
+
+
 def addStuff(filename, listbox):
     """Updates all albums listbox"""
     listbox.delete(0, 'end')
@@ -29,7 +33,7 @@ def addStuff(filename, listbox):
 
 def addAlbum(inputuser, filename, listbox):
     """Adds inputuser to listbox and file filename"""
-    inputuser = inputuser.replace("\n", ' ')
+    inputuser = cleanUserInput(inputuser)
     f = open(filename, 'a')
     f.write(inputuser.encode('utf-8') + ',,\n')
     f.close()
@@ -84,6 +88,8 @@ def addInfo(filename, listbox, info, i, n):
     i is index
     n is position of info
     """
+    info = cleanUserInput(info)
+
     f = open(filename, 'r')
     albums = f.readlines()
     f.close()
