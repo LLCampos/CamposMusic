@@ -1,2 +1,3 @@
-listaipod = 'C:\Users\Luis\Google Drive\Backup Ficheiros Programas Musica\iPod.txt'
-listamusica = 'C:\Users\Luis\Google Drive\Backup Ficheiros Programas Musica\Lista Musica.txt'
+listaipod = '/home/lcampos/Dropbox/data_campos_music/iPod.txt'
+listamusica = '/home/lcampos/Dropbox/data_campos_music/Lista Musica.txt'
+listaphone = '/home/lcampos/Dropbox/data_campos_music/Phone.txt'

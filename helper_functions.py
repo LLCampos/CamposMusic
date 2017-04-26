@@ -1,6 +1,5 @@
 import tkMessageBox
 import webbrowser
-from constants import *
 import urllib
 
 
@@ -59,21 +58,21 @@ def deleteAlbumFromFile(index, filename):
     f.close()
 
 
-def deleteAlbums(filename, listbox, listboxi=False):
+def deleteAlbums(filename, listbox, receiver_path=False, listboxi=False):
     """Delete album(s) from file and listbox"""
     indexes = reversed(listbox.curselection())
     for i in indexes:
         name_album = listbox.get(i)
         if tkMessageBox.askyesno('Delete', 'Are you sure you want to delete ' + name_album + '?'):
             if listboxi:
-                transferToiPod(name_album, listboxi)
+                transferToOtherList(name_album, receiver_path, listboxi)
             listbox.delete(i)
             deleteAlbumFromFile(i, filename)
 
 
-def transferToiPod(album, listboxi):
-    if tkMessageBox.askyesno('', 'Do you want to transfer ' + album + ' to iPod list?'):
-        addAlbum(album, listaipod, listboxi)
+def transferToOtherList(album, receiver_path, listboxi):
+    if tkMessageBox.askyesno('', 'Do you want to transfer ' + album + ' to other list?'):
+        addAlbum(album, receiver_path, listboxi)
 
 
 def editAlbum(filename, listbox, inp, index):
