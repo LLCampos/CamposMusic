@@ -4,15 +4,48 @@ from Tkinter import *
 from constants import *
 
 
-def content(iPod, waitingList):
+def content(iPod, waitingList, phone):
+
+    ##### Phone #####
+
+    entry_phone_list = Entry(phone, width=80)
+    entry_phone_list.pack()
+
+    # 'Add Album' Button
+    addbtn_phone_list = Button(
+        phone,
+        text='Add Album',
+        command=lambda: addAlbumDeleteInput(entry_phone_list, listaphone, listbox_phone_list)
+    )
+    addbtn_phone_list.pack()
+
+    # List of albums
+    scrollbar_phone_list = Scrollbar(phone, orient='vertical')
+    listbox_phone_list = Listbox(phone, width=50, yscrollcommand=scrollbar_phone_list.set, selectmode='extended')
+    scrollbar_phone_list.config(command=listbox_phone_list.yview)
+    scrollbar_phone_list.pack(side='right', fill='y')
+    listbox_phone_list.pack(side='left', fill='both', expand=1)
+    addStuff(listaphone, listbox_phone_list)
+
+    # Add 'Delete' Button
+    delbtn_phone_list = Button(phone, text='Delete', command=lambda: deleteAlbums(listaphone, listbox_phone_list))
+    delbtn_phone_list.pack()
+
+    # Add 'Edit' Button
+    editbtn_phone_list = Button(phone, text='Edit', command=lambda: Edit(listaphone, listbox_phone_list))
+    editbtn_phone_list.pack()
+
     ##### IPOD #####
     # Entry
     e = Entry(iPod, width=80)
     e.pack()
 
     # 'Add Album' Button
-    addbtn = Button(iPod, text='Add Album',
-                            command=lambda: addAlbumDeleteInput(e, listaipod, listbox))
+    addbtn = Button(
+        iPod,
+        text='Add Album',
+        command=lambda: addAlbumDeleteInput(e, listaipod, listbox)
+    )
     addbtn.pack()
 
     # List of albums
@@ -24,7 +57,7 @@ def content(iPod, waitingList):
     addStuff(listaipod, listbox)
 
     # Add 'Delete' Button
-    delbtn = Button(iPod, text='Delete', command=lambda: deleteAlbums(listaipod, listbox))
+    delbtn = Button(iPod, text='Delete', command=lambda: deleteAlbums(listaipod, listbox, listaphone, listbox_phone_list))
     delbtn.pack()
 
     # Add 'Edit' Button
@@ -37,8 +70,11 @@ def content(iPod, waitingList):
     ew.pack()
 
     # 'Add Album' Button
-    addbtnw = Button(waitingList, text='Add Album',
-                    command=lambda: addAlbumDeleteInput(ew, listamusica, listboxw))
+    addbtnw = Button(
+        waitingList,
+        text='Add Album',
+        command=lambda: addAlbumDeleteInput(ew, listamusica, listboxw)
+    )
     addbtnw.pack()
 
     # List of albums
@@ -50,7 +86,7 @@ def content(iPod, waitingList):
     addStuff(listamusica, listboxw)
 
     # Add 'Delete' Button
-    delbtnw = Button(waitingList, text='Delete', command=lambda: deleteAlbums(listamusica, listboxw, listbox))
+    delbtnw = Button(waitingList, text='Delete', command=lambda: deleteAlbums(listamusica, listboxw, listaipod, listbox))
     delbtnw.pack()
 
     # Add 'Edit' Button

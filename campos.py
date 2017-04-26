@@ -9,11 +9,13 @@ n = Notebook(root)
 
 waitingList = Frame(n)
 ipod = Frame(n)
+phone = Frame(n)
 
 n.add(waitingList, text='WaitingList')
 n.add(ipod, text='iPod')
+n.add(phone, text='Phone')
 n.pack()
 
-content(ipod, waitingList)
+content(ipod, waitingList, phone)
 
 root.mainloop()
