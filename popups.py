@@ -26,7 +26,7 @@ def Download(listbox):
     download.title('CamposMusic - Download')
     download.geometry('200x50')
 
-    options = ['PirateBay', 'Kickass', 'RUTracker', 'Google', 'New Album Release']
+    options = ['PirateBay', 'RUTracker', 'Google', 'New Album Release']
     v = StringVar(download)
     v.set(options[0])
 

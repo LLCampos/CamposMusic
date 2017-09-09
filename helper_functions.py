@@ -124,9 +124,7 @@ def goToSite(album_name, site):
     """Does search in site of album"""
     escaped_album_name = urllib.quote(album_name)
     if site == 'PirateBay':
-        url = 'https://arrr.xyz/search/' + escaped_album_name + '/0/99/0'
-    elif site == 'Kickass':
-        url = 'http://kickasstorrents.to/usearch/' + escaped_album_name
+        url = 'https://pirateproxy.cam/search/' + escaped_album_name + '/0/99/0'
     elif site == 'Google':
         url = 'https://www.google.pt/webhp?hl=pt-PT#hl=pt-PT&q=' + escaped_album_name + '+(rar+|+zip)'
     elif site == 'New Album Release':
